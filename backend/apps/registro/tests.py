@@ -1,4 +1,83 @@
 """
+Prueba de unidad: Módulo Registro de Usuario.
+
+1. Introducción
+   - Propósito: Validar que el módulo de registro de usuario funcione correctamente y 
+   cumpla con los requisitos establecidos para el registro exitoso.
+
+2. Alcance
+   - Incluido: Registro de nuevos usuarios y validación de datos.
+
+3. Criterios de aceptación:
+   - El sistema debe aceptar un email y una contraseña válidos.
+   - El registro debe completarse correctamente al confirmar el email.
+   - Debe mostrar mensajes de error claros cuando no se cumplan los requisitos.
+   - El usuario debe ser capaz de iniciar sesión después del registro exitoso.
+
+4. Casos de prueba:
+
+- ID de prueba: U-001
+    - Descripción: Verificar que el sistema acepte un email y una contraseña válidos para el registro.
+    - Precondiciones: El usuario accede a la vista de registro.
+    - Pasos a seguir:
+        1. Ingresar un email válido y una contraseña válida en los campos de registro.
+        2. Hacer clic en "Registrar".
+    - Resultado esperado: Registro exitoso y mensaje de confirmación enviado al email del usuario.
+    - Resultado real: <Resultado de la operación>
+    - Observaciones: N/A
+    - Aprobación: Negada - Aprobada
+
+
+- ID de prueba: U-002
+    - Descripción: Verificar que el sistema muestre un mensaje de error si el email no es válido.
+    - Precondiciones: El usuario accede a la vista de registro.
+    - Pasos a seguir:
+        1. Ingresar un email no válido y una contraseña válida.
+        2. Hacer clic en "Registrar".
+    - Resultado esperado: Mensaje de error indicando que el email es inválido.
+    - Resultado real: <Resultado de la operación>
+    - Observaciones: N/A
+    - Aprobación: Negada - Aprobada
+
+
+- ID de prueba: U-003
+    - Descripción: Verificar que el sistema requiera que ambos campos, email y contraseña, estén llenos antes de registrar al usuario.
+    - Precondiciones: El usuario accede a la vista de registro.
+    - Pasos a seguir:
+        1. Dejar vacío el campo de email o contraseña.
+        2. Hacer clic en "Registrar".
+    - Resultado esperado: Mensaje de error indicando que ambos campos deben completarse.
+    - Resultado real: <Resultado de la operación>
+    - Observaciones: N/A
+    - Aprobación: Negada - Aprobada
+
+
+- ID de prueba: U-004
+    - Descripción: Verificar que el sistema envíe un correo de confirmación al email proporcionado por el usuario.
+    - Precondiciones: El usuario accede a la vista de registro y proporciona un email válido.
+    - Pasos a seguir:
+        1. Ingresar un email y una contraseña válidos.
+        2. Hacer clic en "Registrar".
+    - Resultado esperado: El sistema envía un correo de confirmación al email ingresado.
+    - Resultado real: <Resultado de la operación>
+    - Observaciones: N/A
+    - Aprobación: Negada - Aprobada
+
+- ID de prueba: U-005
+    - Descripción: Verificar que el usuario no pueda registrarse con un email ya existente en el sistema.
+    - Precondiciones: El usuario intenta registrarse con un email ya registrado.
+    - Pasos a seguir:
+        1. Ingresar un email ya existente y una contraseña.
+        2. Hacer clic en "Registrar".
+    - Resultado esperado: Mensaje de error indicando que el email ya está registrado.
+    - Resultado real: <Resultado de la operación>
+    - Observaciones: N/A
+    - Aprobación: Negada - Aprobada
+"""
+
+# -------------------------------------------------------------
+
+"""
 Prueba de Rendimiento: Inicio de Sesión Seguro
 
 1. Introducción
