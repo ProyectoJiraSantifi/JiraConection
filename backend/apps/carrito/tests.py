@@ -254,3 +254,110 @@ Prueba de integración: Componente Producto - Carrito.
 
         Aprobación: Aprobada
 """
+
+"""
+Prueba de unidad: Módulo "Agregar productos al carrito".
+
+    1. Introducción.
+        Propósito: El propósito de estas pruebas es validar que el módulo de agregar productos al carrito funcione 
+        correctamente, permitiendo al usuario seleccionar productos, ajustar cantidades y agregar productos al carrito de compras.
+
+    2. Alcance.
+        Incluido: Selección de productos, ajuste de cantidad, agregación al carrito, validación de 
+        stock y notificación de error si es necesario.
+
+    3. Criterios de aceptación:
+        - El usuario debe poder seleccionar un producto y ver su información.
+        - El sistema debe permitir al usuario seleccionar una cantidad válida del producto.
+        - El producto debe ser agregado al carrito correctamente con la cantidad seleccionada.
+        - El sistema debe validar que la cantidad no exceda el stock disponible.
+        - El sistema debe mostrar una confirmación de que el producto fue agregado al carrito correctamente.
+
+    4. Casos de prueba.
+
+        - ID de prueba: U-001
+        - Descripción: Verificar que un producto puede ser agregado al carrito con la cantidad seleccionada.
+        - Precondiciones: El usuario ha accedido correctamente a la vista del producto.
+        
+        Pasos a seguir:
+            1. Seleccionar un producto de la vista de productos.
+            2. Ajustar la cantidad del producto a agregar al carrito.
+            3. Hacer clic en el botón "Agregar al carrito".
+        
+        Resultado esperado: El producto con la cantidad seleccionada es agregado al carrito correctamente.
+        
+        Resultado real: Producto con la cantidad seleccionada agregado exitosamente al carrito.
+        
+        Observaciones: N/A
+        
+        Aprobación: Aprobada
+        
+        - ID de prueba: U-002
+        - Descripción: Verificar que el sistema no permita agregar una cantidad mayor al stock disponible.
+        - Precondiciones: El usuario ha accedido correctamente a la vista del producto y el stock disponible es 10 unidades.
+        
+        Pasos a seguir:
+            1. Seleccionar un producto con un stock de 10 unidades.
+            2. Ajustar la cantidad a 12 unidades.
+            3. Hacer clic en el botón "Agregar al carrito".
+        
+        Resultado esperado: El sistema debe mostrar un mensaje de error indicando que la cantidad excede el stock disponible.
+        
+        Resultado real: Error mostrado correctamente: "La cantidad seleccionada excede el stock disponible."
+        
+        Observaciones: El sistema bloquea la cantidad no válida correctamente.
+        
+        Aprobación: Aprobada
+        
+        - ID de prueba: U-003
+        - Descripción: Verificar que el sistema no permita agregar una cantidad no válida (por ejemplo, 0 unidades).
+        - Precondiciones: El usuario ha accedido correctamente a la vista del producto.
+        
+        Pasos a seguir:
+            1. Seleccionar un producto.
+            2. Ajustar la cantidad a 0.
+            3. Hacer clic en el botón "Agregar al carrito".
+        
+        Resultado esperado: El sistema debe mostrar un mensaje de error indicando que la cantidad debe ser mayor que 0.
+        
+        Resultado real: Mensaje de error mostrado: "La cantidad debe ser mayor a 0."
+        
+        Observaciones: El sistema permite ingresar solo valores positivos, lo cual es correcto.
+        
+        Aprobación: Aprobada
+        
+        - ID de prueba: U-004
+        - Descripción: Verificar que el sistema confirme que el producto fue agregado al carrito.
+        - Precondiciones: El usuario ha accedido correctamente a la vista del producto.
+        
+        Pasos a seguir:
+            1. Seleccionar un producto.
+            2. Ajustar la cantidad a 1 unidad.
+            3. Hacer clic en el botón "Agregar al carrito".
+        
+        Resultado esperado: El sistema debe mostrar un mensaje confirmando que el producto fue agregado al carrito.
+        
+        Resultado real: Mensaje de confirmación mostrado: "Producto agregado al carrito correctamente."
+        
+        Observaciones: N/A
+        
+        Aprobación: Aprobada
+        
+        - ID de prueba: U-005
+        - Descripción: Verificar que el usuario puede agregar múltiples productos al carrito.
+        - Precondiciones: El usuario ha accedido correctamente a la vista de productos.
+        
+        Pasos a seguir:
+            1. Seleccionar un producto y agregarlo al carrito.
+            2. Regresar a la vista de productos y seleccionar un segundo producto.
+            3. Ajustar la cantidad del segundo producto.
+            4. Hacer clic en "Agregar al carrito".
+        
+        Resultado esperado: Ambos productos son agregados al carrito correctamente.
+        
+        Resultado real: Múltiples productos agregados al carrito exitosamente.
+        
+        Observaciones: La navegación entre productos y la actualización del carrito funcionan correctamente.
+        
+        Aprobación: Aprobada
+"""
