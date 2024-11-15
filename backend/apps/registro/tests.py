@@ -25,7 +25,7 @@ Prueba de unidad: Módulo Registro de Usuario.
     - Resultado esperado: Registro exitoso y mensaje de confirmación enviado al email del usuario.
     - Resultado real: <Resultado de la operación>
     - Observaciones: N/A
-    - Aprobación: Negada - Aprobada
+    - Aprobación: Aprobada
 
 
 - ID de prueba: U-002
@@ -37,7 +37,7 @@ Prueba de unidad: Módulo Registro de Usuario.
     - Resultado esperado: Mensaje de error indicando que el email es inválido.
     - Resultado real: <Resultado de la operación>
     - Observaciones: N/A
-    - Aprobación: Negada - Aprobada
+    - Aprobación: Aprobada
 
 
 - ID de prueba: U-003
@@ -49,7 +49,7 @@ Prueba de unidad: Módulo Registro de Usuario.
     - Resultado esperado: Mensaje de error indicando que ambos campos deben completarse.
     - Resultado real: <Resultado de la operación>
     - Observaciones: N/A
-    - Aprobación: Negada - Aprobada
+    - Aprobación: Aprobada
 
 
 - ID de prueba: U-004
@@ -61,7 +61,7 @@ Prueba de unidad: Módulo Registro de Usuario.
     - Resultado esperado: El sistema envía un correo de confirmación al email ingresado.
     - Resultado real: <Resultado de la operación>
     - Observaciones: N/A
-    - Aprobación: Negada - Aprobada
+    - Aprobación: Aprobada
 
 - ID de prueba: U-005
     - Descripción: Verificar que el usuario no pueda registrarse con un email ya existente en el sistema.
@@ -72,7 +72,7 @@ Prueba de unidad: Módulo Registro de Usuario.
     - Resultado esperado: Mensaje de error indicando que el email ya está registrado.
     - Resultado real: <Resultado de la operación>
     - Observaciones: N/A
-    - Aprobación: Negada - Aprobada
+    - Aprobación: Aprobada
 """
 
 # -------------------------------------------------------------
@@ -105,7 +105,7 @@ Prueba de Rendimiento: Inicio de Sesión Seguro
     - Resultado esperado: Respuesta en menos de 2 segundos por solicitud.
     - Resultado real: <Resultado de la operación>
     - Observaciones: N/A
-    - Aprobación: Negada - Aprobada
+    - Aprobación: Aprobada
 
 - Prueba 2
     - ID de prueba: PR-002
@@ -119,7 +119,7 @@ Prueba de Rendimiento: Inicio de Sesión Seguro
     - Resultado esperado: Inicio de sesión en menos de 5 segundos por solicitud.
     - Resultado real: <Resultado de la operación>
     - Observaciones: N/A
-    - Aprobación: Negada - Aprobada
+    - Aprobación: Aprobada
 
 - Prueba 3
     - ID de prueba: PR-003
@@ -132,7 +132,7 @@ Prueba de Rendimiento: Inicio de Sesión Seguro
     - Resultado esperado: Mensaje de error claro, sin impacto en el rendimiento general del sistema.
     - Resultado real: <Resultado de la operación>
     - Observaciones: N/A
-    - Aprobación: Negada - Aprobada
+    - Aprobación: Aprobada
 
 - Prueba 4
     - ID de prueba: PR-004
@@ -145,7 +145,7 @@ Prueba de Rendimiento: Inicio de Sesión Seguro
     - Resultado esperado: Tiempo de respuesta menor a 2 segundos sin caídas del sistema.
     - Resultado real: <Resultado de la operación>
     - Observaciones: N/A
-    - Aprobación: Negada - Aprobada
+    - Aprobación: Aprobada
 
 - Prueba 5
     - ID de prueba: PR-005
@@ -159,5 +159,5 @@ Prueba de Rendimiento: Inicio de Sesión Seguro
     - Resultado esperado: El sistema muestra un mensaje de reconexión clara o solicita repetir el inicio de sesión.
     - Resultado real: <Resultado de la operación>
     - Observaciones: N/A
-    - Aprobación: Negada - Aprobada
+    - Aprobación: Aprobada
 """
