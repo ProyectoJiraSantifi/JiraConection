@@ -123,3 +123,134 @@ Prueba de integración: Componente Carrito - Inventario.
 
         Aprobación: Aprobada
 """
+
+"""
+Prueba de integración: Componente Producto - Carrito.
+
+    1. Introducción.
+        Propósito: Validar la integración entre el Componente de Producto y el Componente de Carrito, asegurando que la 
+        funcionalidad de agregar productos, ajustar cantidades y eliminar artículos en el carrito funcione correctamente 
+        en conjunto con la selección y gestión de productos en el sistema.
+
+    2. Alcance.
+        Incluido: Componente Producto y Componente Carrito
+
+    3. Criterios de aceptación:
+        - El sistema permite agregar un producto desde el Componente de Producto al Carrito y muestra el artículo en la lista de compras.
+        - El sistema permite modificar la cantidad de un producto en el carrito desde la vista de Producto y refleja estos cambios en 
+          el Carrito.
+        - El sistema elimina el producto del Carrito si el usuario selecciona la cantidad 0 desde el Componente Producto.
+        - El sistema maneja adecuadamente errores si el usuario intenta agregar una cantidad mayor al stock disponible.
+
+    4. Casos de prueba.
+
+        - ID de prueba: PI-001
+
+        - Descripción: Verificar que se puede agregar un producto al carrito desde la vista de Producto.
+
+        - Precondiciones: El usuario accede a la vista de Producto y el producto seleccionado tiene stock disponible.
+
+        - Componentes involucrados:
+            - Componente Producto y Componente Carrito
+
+        Pasos a seguir:
+            1. Iniciar el Componente Producto y seleccionar un producto.
+            2. Ingresar una cantidad válida y hacer clic en "Agregar al carrito".
+            3. Acceder al Componente Carrito y verificar que el producto se muestra con la cantidad especificada.
+
+        Resultado esperado: El producto aparece en el carrito con la cantidad seleccionada.
+
+        Resultado real: Producto agregado al carrito con la cantidad seleccionada.
+
+        Observaciones: N/A
+
+        Aprobación: Aprobada
+
+        - ID de prueba: PI-002
+
+        - Descripción: Verificar que el sistema permita ajustar la cantidad de un producto en el carrito desde la vista de Producto.
+
+        - Precondiciones: El usuario tiene un producto en el carrito y desea ajustar la cantidad.
+
+        - Componentes involucrados:
+            - Componente Producto y Componente Carrito
+
+        Pasos a seguir:
+            1. Acceder al Componente Producto y seleccionar el producto que está en el carrito.
+            2. Modificar la cantidad y hacer clic en "Actualizar cantidad en carrito".
+            3. Acceder al Componente Carrito y verificar que la cantidad actualizada esté reflejada correctamente.
+
+        Resultado esperado: La cantidad en el carrito se ajusta a la nueva cantidad seleccionada en el Componente Producto.
+
+        Resultado real: Cantidad actualizada correctamente en el carrito.
+
+        Observaciones: La actualización de cantidad es reflejada sin problemas.
+
+        Aprobación: Aprobada
+
+        - ID de prueba: PI-003
+
+        - Descripción: Verificar que el sistema elimine el producto del carrito si el usuario selecciona la cantidad 0 desde la vista de 
+         Producto.
+
+        - Precondiciones: El usuario tiene un producto en el carrito.
+
+        - Componentes involucrados:
+            - Componente Producto y Componente Carrito
+
+        Pasos a seguir:
+            1. Acceder al Componente Producto y seleccionar el producto en el carrito.
+            2. Cambiar la cantidad a 0 y hacer clic en "Actualizar cantidad en carrito".
+            3. Verificar que el producto ya no esté en la lista de artículos en el carrito.
+
+        Resultado esperado: El producto se elimina automáticamente del carrito al cambiar la cantidad a 0.
+
+        Resultado real: Producto eliminado del carrito al establecer cantidad a 0.
+
+        Observaciones: N/A
+
+        Aprobación: Aprobada
+
+        - ID de prueba: PI-004
+
+        - Descripción: Verificar que el sistema no permita agregar una cantidad mayor al stock disponible en el Componente Producto.
+
+        - Precondiciones: El producto seleccionado tiene un stock limitado.
+
+        - Componentes involucrados:
+            - Componente Producto y Componente Carrito
+
+        Pasos a seguir:
+            1. Acceder al Componente Producto y seleccionar un producto con stock de 5 unidades.
+            2. Intentar agregar una cantidad mayor (por ejemplo, 10 unidades) al carrito.
+            3. Verificar que el sistema muestra un mensaje de error.
+
+        Resultado esperado: El sistema muestra un mensaje de error indicando que la cantidad excede el stock disponible.
+
+        Resultado real: Mensaje de error mostrado: "Cantidad solicitada excede el stock disponible."
+
+        Observaciones: La validación de stock en el Componente Producto es efectiva.
+
+        Aprobación: Aprobada
+
+        - ID de prueba: PI-005
+
+        - Descripción: Verificar que el total del carrito se actualice correctamente al agregar múltiples productos desde el Componente Producto.
+
+        - Precondiciones: El usuario selecciona y agrega varios productos con diferentes cantidades y precios desde el Componente Producto.
+
+        - Componentes involucrados:
+            - Componente Producto y Componente Carrito
+
+        Pasos a seguir:
+            1. Acceder al Componente Producto y agregar varios productos al carrito.
+            2. Acceder al Componente Carrito y verificar que el total refleja correctamente las cantidades y precios de los productos agregados.
+
+        Resultado esperado: El total del carrito se actualiza correctamente con todos los productos y cantidades.
+
+        Resultado real: Total del carrito calculado y mostrado correctamente.
+
+        Observaciones: La suma de precios es exacta.
+
+        Aprobación: Aprobada
+"""
