@@ -42,4 +42,19 @@ Listado de productos: Se mostrará en forma de lista o cuadrícula, donde cada p
 Funcionalidad adicional:
     - Paginación: Se implementará para dividir el catálogo en varias páginas, optimizando
     la velocidad y el rendimiento al mostrar un número fijo de productos por página.
+    
+    
+Agregar productos al carrito:
+Funcionalidad para que los usuarios puedan agregar productos al carrito de compras de manera 
+sencilla y rápida. Al hacer clic en un botón "Agregar al carrito", el producto seleccionado se
+agregará al carrito de compras, y se mostrará un mensaje de confirmación. El carrito de compras
+mostrará una lista de los productos seleccionados, con la opción de modificar la cantidad o
+eliminar productos.
+   - Botón "Agregar al carrito": Permite a los usuarios agregar productos al carrito con un clic.
+   - Carrito de compras: Muestra una lista de los productos seleccionados, con opciones para
+     modificar la cantidad o eliminar productos.
+    - Mensaje de confirmación: Se mostrará un mensaje de confirmación al agregar un producto al
+        carrito
+    - Cantidad: Los usuarios podrán seleccionar la cantidad deseada de cada producto antes de
+        agregarlo al carrito.
 """
