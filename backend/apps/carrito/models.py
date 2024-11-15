@@ -48,5 +48,6 @@ Relacion con otras clases:
         - Al agregar o eliminar productos, el carrito utiliza los atributos precio y cantidad de Producto para calcular el subtotal y el total.
         - El método agregarProducto() verifica el stock disponible del producto antes de añadirlo al carrito, utilizando actualizarStock() para reflejar 
         la cantidad disponible en el inventario.
-   
+
+
 """
