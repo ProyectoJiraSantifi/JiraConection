@@ -57,4 +57,19 @@ eliminar productos.
         carrito
     - Cantidad: Los usuarios podrán seleccionar la cantidad deseada de cada producto antes de
         agregarlo al carrito.
+        
+        
+Eliminar productos del carrito:
+Los usuarios tendrán la opción de eliminar productos del carrito de compras en cualquier momento.
+Se implementará una funcionalidad sencilla para eliminar productos de forma individual o vaciar
+completamente el carrito.
+    - Botón "Eliminar": Permite a los usuarios eliminar productos individuales del carrito.
+    - Opción "Vaciar carrito": Permite a los usuarios eliminar todos los productos del carrito
+        de compras de una sola vez.
+    - Confirmación: Se mostrará un mensaje de confirmación al eliminar productos del carrito.
+    - Actualización del subtotal: El subtotal del carrito se actualizará automáticamente al
+        eliminar productos.
+    - Actualizacion automatica del inventario: El stock del producto debe actualizarse 
+    automaticamente al eliminar un producto del carrito.
+        
 """
