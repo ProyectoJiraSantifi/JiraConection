@@ -42,4 +42,6 @@ Listado de productos: Se mostrará en forma de lista o cuadrícula, donde cada p
 Funcionalidad adicional:
     - Paginación: Se implementará para dividir el catálogo en varias páginas, optimizando
     la velocidad y el rendimiento al mostrar un número fijo de productos por página.
+    
+    
 """
