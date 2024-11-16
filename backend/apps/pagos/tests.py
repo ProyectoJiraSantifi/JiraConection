@@ -456,6 +456,194 @@ Prueba de seguridad: Cifrado de datos sensibles
     * Observaciones: N/A
     * Aprobación: Negada/Aprobada
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Prueba de seguridad general: Seguridad en el procesamiento de pagos
+
+1-  Introducción
+
+    * Propósito: Validar que el sistema de procesamiento de pagos sea seguro, protegiendo datos sensibles, garantizando la autenticación adecuada, y asegurando una comunicación segura tanto con el sistema interno como con plataformas externas como PayPal y Mercado Libre.
+
+2-  Alcance
+
+    * Incluido:
+        * Cifrado y protección de datos sensibles, como tokens, credenciales y parámetros de pago.
+        * Validación de entradas antes de procesar pagos.
+        * Seguridad en la comunicación con plataformas externas (PayPal, Mercado Libre).
+        * Protección contra ataques como inyecciones, DDoS y manipulación de datos.
+        * Excluido: Validación de la seguridad interna de las plataformas externas (PayPal y Mercado Libre).
+
+3-  Criterios de aceptación:
+
+    * Los tokens y credenciales deben ser cifrados tanto en tránsito como en reposo.
+    * El sistema debe validar que todas las entradas sean correctas antes de procesar pagos (incluyendo monto, método de pago y datos del usuario).
+    * Las conexiones con plataformas externas deben ser seguras, utilizando HTTPS y verificando certificados válidos.
+    * Los datos sensibles nunca deben ser expuestos en registros o respuestas del sistema.
+    * El sistema debe prevenir inyecciones SQL, XSS y otros tipos de inyección maliciosa mediante la sanitización adecuada de entradas.
+    * El sistema debe detectar y bloquear intentos de ataques DDoS, limitando la frecuencia de solicitudes hacia plataformas externas.
+    * En caso de error de autenticación o procesamiento, el sistema debe generar un mensaje genérico de error sin exponer detalles técnicos.
+
+
+---------------------------------------------------
+
+
+Prueba de Seguridad: Protección de Datos Sensibles en Transacciones Digitales
+
+1   Introducción
+
+    * Propósito: Asegurar que los datos sensibles (como números de tarjeta de crédito, credenciales bancarias, información personal) estén protegidos durante las transacciones de pago.
+
+2   Alcance
+
+    * Incluido: Cifrado y protección de los datos personales y financieros durante el proceso de pago.
+    * Excluido: La seguridad interna de las plataformas externas (como bancos o plataformas de pago).
+
+3   Criterios de aceptación:
+
+    * Todos los datos sensibles deben ser cifrados durante la transmisión utilizando HTTPS (TLS 1.2 o superior).
+    * Los datos no deben ser almacenados en texto plano ni accesibles desde el servidor sin medidas de protección.
+    * El sistema debe cumplir con las normativas de seguridad PCI-DSS para el manejo de datos de tarjetas de crédito.
+
+4   Casos de prueba
+
+    * ID de prueba: PS-001
+    * Descripción: Validar que los datos sensibles estén cifrados durante su transmisión.
+    * Precondiciones: El sistema debe estar configurado para procesar pagos digitales y bancarios.
+    * Pasos a seguir:
+        1- Realizar una transacción de pago utilizando una tarjeta de crédito.
+        2- Capturar la solicitud de pago para verificar si los datos sensibles están cifrados (por ejemplo, número de tarjeta, dirección, etc.).
+        3- Verificar que los datos no se almacenen sin cifrado en el servidor.
+    * Resultado esperado: Los datos sensibles deben estar cifrados durante la transmisión y no deben ser accesibles sin autorización.
+    * Resultado real:
+    * Observaciones: N/A
+    * Aprobación: Negada/Aprobada
+
+
+----------------------------------------------------------------------------------
+
+
+Prueba de Seguridad: Autenticación de Usuario para Pagos Digitales
+
+1   Introducción
+
+    * Propósito: Asegurar que el proceso de autenticación del usuario sea robusto, evitando accesos no autorizados durante el pago.
+
+2   Alcance
+
+    * Incluido: Métodos de autenticación de usuario (autenticación de dos factores, autenticación biométrica, etc.) para pagos digitales y bancarios.
+    * Excluido: La seguridad interna de la plataforma de pago (como PayPal o bancos).
+
+3   Criterios de aceptación:
+
+    * El sistema debe verificar la identidad del usuario antes de procesar el pago.
+    * Se deben implementar métodos de autenticación seguros, como 2FA (autenticación de dos factores).
+    * Si se detectan múltiples intentos fallidos de autenticación, el sistema debe bloquear temporalmente el acceso.
+
+3   Casos de prueba
+
+    * ID de prueba: PS-02
+    * Descripción: Validar que el sistema requiera autenticación para procesar pagos.
+    * Precondiciones: El sistema debe estar configurado para solicitar autenticación antes de procesar el pago.
+    * Pasos a seguir:
+        1-  Intentar realizar un pago sin estar autenticado.
+        2-  Verificar que el sistema solicite autenticación antes de completar la transacción.
+        3-  Ingresar credenciales incorrectas varias veces para verificar la respuesta del sistema.
+    * Resultado esperado: El sistema debe solicitar autenticación antes de procesar el pago y bloquear intentos fallidos.
+    * Resultado real:
+    * Observaciones: N/A
+    * Aprobación: Negada/Aprobada
+
+----------------------------------------------------------------------------------
+
+
+Prueba de Seguridad: Protección contra Fraude en Pagos Bancarios
+
+1   Introducción
+
+    * Propósito: Verificar que el sistema esté protegido contra intentos de fraude, como el uso de tarjetas bancarias robadas o la manipulación de datos de cuentas bancarias.
+
+2   Alcance
+
+    * Incluido: Monitoreo y validación de transacciones bancarias para detectar fraudes.
+    * Excluido: La seguridad del sistema bancario o de la plataforma de pagos.
+
+3- Criterios de aceptación:
+
+    * El sistema debe detectar transacciones sospechosas y alertar al usuario o bloquear la transacción si es necesario.    
+    * Las transacciones deben ser verificadas a través de mecanismos de validación adicionales (como códigos de seguridad de tarjetas, claves OTP, etc.).
+    * Los sistemas deben contar con monitoreo en tiempo real para detectar actividades sospechosas.
+
+4   Casos de prueba
+
+    * ID de prueba: PS-003
+    * Descripción: Validar que el sistema identifique transacciones sospechosas y actúe en consecuencia.
+    * Precondiciones: El sistema debe estar configurado para procesar pagos bancarios.
+    * Pasos a seguir:
+        1   Realizar una transacción con una tarjeta robada o con datos incorrectos.
+        2   Intentar manipular los detalles de la cuenta bancaria (como cambiar el monto o la cuenta de destino).
+        3   Verificar que el sistema detecte la transacción fraudulenta y bloquee la operación.
+    * Resultado esperado: El sistema debe bloquear la transacción fraudulenta y notificar al usuario o a los administradores del sistema.
+    * Resultado real:
+    * Observaciones: N/A
+    * Aprobación: Negada/Aprobada
+
+----------------------------------------------------------------------------------
+
+
+Prueba de Seguridad: Validación de la Integridad de la Transacción en Métodos de Pago Digitales
+Introducción
+
+Propósito: Verificar que los datos de la transacción no sean manipulados entre el sistema de pago y el sistema de banco o plataforma digital (como PayPal o Mercado Libre).
+Alcance
+
+Incluido: Validación de la integridad de los datos de pago durante la transacción.
+Excluido: La seguridad interna de las plataformas de pago externas.
+Criterios de aceptación:
+
+El sistema debe garantizar que los datos de pago no sean modificados durante el tránsito entre el cliente, el sistema de pago y la plataforma bancaria o digital.
+Las transacciones deben ser verificadas para asegurar que los detalles no hayan sido alterados durante el proceso.
+Casos de prueba
+
+ID de prueba: PS-012
+Descripción: Verificar que la transacción no haya sido manipulada.
+Precondiciones: El sistema debe estar configurado para realizar pagos con plataformas de pago digitales y bancarias.
+Pasos a seguir:
+Iniciar una transacción de pago con detalles específicos (monto, usuario, etc.).
+Intentar interceptar y modificar los datos de la transacción antes de que se complete.
+Verificar que el sistema detecte cualquier alteración de los datos y bloquee la transacción.
+Resultado esperado: La transacción debe ser validada en su integridad y no debe ser posible modificarla sin ser detectada.
+Resultado real:
+Observaciones: N/A
+Aprobación: Negada/Aprobada
+
+--------------------------------------------------------------------------------------
+
+Prueba de Seguridad: Protección de la Base de Datos de Pagos
+
+Introducción
+
+Propósito: Garantizar que los registros de pagos (incluyendo detalles de transacciones, usuarios y métodos de pago) estén protegidos contra accesos no autorizados.
+Alcance
+
+Incluido: Seguridad en la base de datos donde se almacenan los registros de las transacciones de pago.
+Excluido: Seguridad de las bases de datos externas de plataformas de pago.
+Criterios de aceptación:
+
+Los registros de pago deben ser almacenados de forma segura y no deben estar accesibles sin autorización.
+Las bases de datos deben estar protegidas contra ataques de inyección SQL y otros tipos de accesos no autorizados.
+Casos de prueba
+
+ID de prueba: PS-013
+Descripción: Verificar la seguridad de la base de datos que almacena los registros de pagos.
+Precondiciones: La base de datos debe estar configurada y contener registros de transacciones.
+Pasos a seguir:
+Intentar realizar un ataque de inyección SQL en la base de datos de pagos.
+Verificar que los datos de los pagos no sean accesibles desde consultas sin autorización.
+Resultado esperado: La base de datos debe estar protegida contra inyecciones SQL y accesos no autorizados.
+Resultado real:
+Observaciones: N/A
+Aprobación: Negada/Aprobada
 
 """
 
