@@ -295,5 +295,167 @@ Prueba de interfaz de usuario: Mensaje de error por datos incompletos
     * Aprobación: Negada/Aprobada
 
 
+--------------------------------------------------
+
+
+1  Introducción
+
+    * Propósito: Garantizar la protección de datos sensibles, la validación de entradas y la gestión segura de la comunicación con plataformas externas como PayPal y Mercado Libre, previniendo accesos no autorizados o manipulación de datos en el sistema.
+
+2 Alcance
+
+    * Incluido:
+        * Manejo seguro de tokens y credenciales de PayPal y Mercado Libre.
+        * Validación de datos enviados a los métodos procesarPago() y verificarPago().
+        * Protección de la relación uno a uno entre Pedido y Pago.
+    * Excluido: Seguridad interna de las plataformas externas (PayPal y Mercado Libre).
+
+3   Criterios de aceptación:
+
+    * Los tokens y credenciales deben estar cifrados tanto en tránsito como en reposo.
+    * El sistema debe validar todas las entradas antes de procesar un pago.
+    * Ningún usuario no autenticado o no autorizado debe poder modificar datos de un pago o su estado.
+    * Las conexiones con las APIs externas deben ser seguras (por ejemplo, HTTPS).
+    * En caso de error, el sistema no debe exponer datos técnicos ni información sensible.
+
+    
+----------------------------------------------------------------------------------------
+
+Prueba de seguridad: Validación de datos enviados a plataformas externas
+
+1   Introducción
+
+    * Propósito: Garantizar que los datos transmitidos a PayPal y Mercado Libre sean validados y protegidos contra inyección de datos maliciosos.
+
+2   Alcance
+
+    * Incluido: Validación de los datos enviados a las plataformas externas.
+    * Excluido: Fallos de seguridad inherentes a las plataformas externas.
+
+3   Criterios de aceptación:
+
+    * Los datos enviados deben cumplir con los formatos requeridos por las plataformas.
+    * Cualquier dato sospechoso debe ser rechazado antes de enviarse.
+    * Las conexiones a las plataformas externas deben ser cifradas (HTTPS).
+    * Los registros deben incluir cualquier intento de inyección o manipulación de datos.
+
+3   Casos de prueba
+
+    * ID de prueba: PS-001
+    * Descripción: Verificar que los datos enviados no contengan valores maliciosos.
+    * Precondiciones: El sistema debe estar configurado para conectarse a las plataformas de pago.
+    * Pasos a seguir:
+        1- Ingresar valores maliciosos en los campos del formulario (por ejemplo, scripts o consultas SQL).
+        2- Intentar procesar un pago con PayPal y Mercado Libre.
+        3- Verificar que los datos maliciosos sean rechazados antes de enviarse.
+    * Resultado esperado: Los datos maliciosos son detectados y bloqueados, el sistema muestra un mensaje de error.
+    * Resultado real:
+    * Observaciones: N/A
+    * Aprobación: Negada/Aprobada
+
+-----------------------------------------------------------------------------------------
+
+2 Prueba de seguridad: Gestión de tokens en Mercado Libre
+
+1-  Introducción
+
+*   Propósito: Validar que los tokens generados para la conexión con la API de Mercado Libre estén protegidos contra ataques como interceptación y reutilización.
+
+2-  Alcance
+
+*   Incluido: Generación, almacenamiento y uso de tokens de autenticación.
+* Excluido: Seguridad del sistema externo de Mercado Libre.
+
+3-  Criterios de aceptación:
+
+    * Los tokens deben generarse utilizando métodos seguros y expirar tras un periodo definido.
+    * Los tokens no deben almacenarse en texto plano.
+    * La reutilización de tokens caducados debe ser rechazada.
+    * Las conexiones deben ser seguras (TLS 1.2 o superior).
+
+4 Casos de prueba
+
+    * ID de prueba: PS-002
+    * Descripción: Validar la seguridad en la gestión de tokens para Mercado Libre.
+    * Precondiciones: El sistema debe estar configurado con acceso al API de Mercado Libre.
+    * Pasos a seguir:
+        1- Realizar un pago utilizando un token válido.
+        2- Intentar reutilizar el mismo token para una segunda transacción.
+        3- Interceptar la solicitud y analizar si el token está cifrado.
+
+    * Resultado esperado: El sistema rechaza la reutilización de tokens y protege los tokens en tránsito.
+    * Resultado real:
+    * Observaciones: N/A
+    * Aprobación: Negada/Aprobada
+
+-------------------------------------------------------------------------------------------
+
+3 Prueba de seguridad: Protección contra ataques de fuerza bruta en autenticación
+
+1 Introducción
+
+    * Propósito: Garantizar que el sistema proteja las interfaces de autenticación frente a ataques de fuerza bruta.
+
+2 Alcance
+
+    * Incluido: Intentos de acceso no autorizados a través de la autenticación para PayPal y Mercado Libre.
+    * Excluido: Ataques directos a las plataformas externas.
+
+3 Criterios de aceptación:
+
+    * El sistema debe bloquear la cuenta tras múltiples intentos fallidos de autenticación.
+    * Los intentos fallidos deben registrarse en los logs de seguridad.
+    * Debe mostrarse un mensaje claro al usuario tras el bloqueo.
+    * El bloqueo debe liberarse solo mediante procedimientos seguros.
+
+4 Casos de prueba
+
+    * ID de prueba: PS-003
+    * Descripción: Validar el comportamiento del sistema ante intentos repetidos de autenticación fallida.
+    * Precondiciones: La autenticación debe estar configurada para ambas plataformas.
+    * Pasos a seguir:
+        1- Intentar autenticarse con credenciales incorrectas más de cinco veces.
+        2- Verificar que el sistema bloquee el acceso tras múltiples intentos.
+        3- Intentar desbloquear mediante procedimientos no autorizados.
+    * Resultado esperado: El acceso es bloqueado tras múltiples intentos fallidos y se registran los eventos.
+    * Resultado real:
+    * Observaciones: N/A
+    * Aprobación: Negada/Aprobada
+
+---------------------------------------------------------------------------------------------
+
+Prueba de seguridad: Cifrado de datos sensibles
+
+1-  Introducción
+
+    * Propósito: Validar que los datos sensibles como el idPago, el monto y los datos de usuario estén cifrados durante su transmisión y almacenamiento.
+
+2-  Alcance
+
+    * Incluido: Cifrado de datos sensibles en tránsito y reposo.
+    * Excluido: Análisis de cifrado en plataformas externas.
+
+3-  Criterios de aceptación:
+
+    * Los datos sensibles deben cifrarse utilizando estándares modernos (AES-256, TLS 1.2 o superior).
+    * Los datos almacenados en la base de datos deben estar cifrados y no ser accesibles directamente.
+    * Los logs del sistema no deben contener datos sensibles en texto plano.
+    * El acceso a datos cifrados debe estar restringido por permisos adecuados.
+
+4-  Casos de prueba
+
+    * ID de prueba: PS-004
+    * Descripción: Verificar que los datos sensibles estén cifrados en todas las etapas del proceso.
+    * Precondiciones: El sistema debe estar configurado con métodos de cifrado.
+    * Pasos a seguir:
+        1- Realizar un pago y capturar la transmisión de datos para verificar el cifrado.
+        2- Inspeccionar la base de datos y los logs para confirmar que los datos sensibles no estén en texto plano.
+        3- Intentar acceder a los datos cifrados sin las credenciales necesarias.
+    * Resultado esperado: Todos los datos sensibles están cifrados y protegidos contra accesos no autorizados.
+    * Resultado real:
+    * Observaciones: N/A
+    * Aprobación: Negada/Aprobada
+
+
 """
 
