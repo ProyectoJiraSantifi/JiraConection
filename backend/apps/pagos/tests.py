@@ -559,6 +559,357 @@ Prueba de seguridad: Cifrado de datos sensibles
     * Observaciones: N/A
     * Aprobación: Negada/Aprobada
 
+---------------------------------------------------------------------------------------------
 
+Prueba de seguridad: Seguridad en el Procesamiento de Tarjetas Bancarias
+
+Introducción
+Propósito: Verificar que el sistema maneje de forma segura la información de tarjetas bancarias y cumpla con los estándares PCI DSS.
+
+Alcance
+
+Incluido:
+    -Validación de datos de tarjetas
+    -Encriptación de información sensible
+    -Enmascaramiento de números de tarjeta
+    -Validación de fecha de expiración y CVV
+
+Excluido:
+    -Procesamiento real de transacciones bancarias
+    -Conexiones con redes bancarias externas
+
+Criterios de aceptación:
+    -Los números de tarjeta deben estar encriptados en tránsito y en reposo
+    -Solo se deben mostrar los últimos 4 dígitos de la tarjeta
+    -El CVV nunca debe ser almacenado
+    -La información sensible debe ser eliminada después del procesamiento
+
+Casos de prueba
+
+ID de prueba: SEG-005
+Descripción: Validar el manejo seguro de datos de tarjetas bancarias.
+Precondiciones: Sistema configurado con encriptación TLS 1.2 o superior.
+Pasos a seguir:
+
+Ingresar datos de una tarjeta de prueba
+Verificar la encriptación durante la transmisión
+Verificar el enmascaramiento en la interfaz
+Intentar acceder a los datos sin autorización
+Verificar logs del sistema por exposición de datos sensibles
+
+Resultado esperado:
+
+Datos transmitidos de forma encriptada
+Número de tarjeta enmascarado en todas las interfaces
+CVV no almacenado en base de datos
+Acceso denegado a intentos no autorizados
+Logs limpios de información sensible
+
+Resultado real:
+Observaciones: N/A
+Aprobación: Aprobada/Negada
+
+---------------------------------------------------------------------------------------------
+
+Prueba de seguridad: Integridad y Eliminación Segura de Datos
+
+Introducción
+Propósito: Asegurar que la información sensible de pagos no persista en el sistema más allá del tiempo necesario para el procesamiento.
+
+Alcance
+
+Incluido:
+    -Proceso de eliminación segura de datos
+    -Verificación de datos residuales
+    -Validación de logs y cachés
+
+Excluido:
+    -Backups del sistema
+    -Datos archivados históricos
+
+Criterios de aceptación:
+    -La información sensible debe ser eliminada inmediatamente después del procesamiento
+    -No deben quedar rastros en caché o archivos temporales
+    -Los logs no deben contener información sensible
+    -Debe existir un registro de la eliminación exitosa
+
+Casos de prueba
+
+ID de prueba: SEG-006
+Descripción: Verificar la eliminación segura de datos sensibles post-procesamiento.
+Precondiciones: Sistema con transacciones procesadas que contengan datos sensibles.
+
+Pasos a seguir:
+
+Procesar un pago con tarjeta de prueba
+Verificar el procesamiento exitoso
+Revisar todas las ubicaciones posibles de almacenamiento:
+
+    Base de datos principal
+    Archivos temporales
+    Logs del sistema
+    Caché de aplicación
+
+Intentar recuperar los datos eliminados
+Verificar registros de auditoría
+
+Resultado esperado:
+
+Datos sensibles completamente eliminados
+Sin información recuperable en ningún almacenamiento
+Registro de auditoría que confirme la eliminación
+Imposibilidad de acceder a los datos eliminados
+
+Resultado real:
+Observaciones: N/A
+Aprobación: Aprobada/Negada
+
+---------------------------------------------------------------------------------------------
+
+Pruebas de Seguridad y Verificación de Pagos
+
+1. Pruebas de Seguridad
+
+    1.1 Introducción
+    Propósito: Verificar la integridad, confidencialidad y seguridad del sistema de pagos y datos sensibles del usuario.
+
+    1.2 Alcance
+    Incluido:
+
+    Encriptación de datos
+    Protección contra ataques comunes
+    Manejo seguro de información de pago
+    Cumplimiento PCI DSS
+    Validación de tokens
+    Protección contra fraudes
+
+    1.3 Criterios de aceptación
+
+    Encriptación TLS 1.3 o superior
+    Cumplimiento de estándares PCI DSS
+    Tiempo máximo de vida de tokens de pago: 15 minutos
+    Zero almacenamiento de datos sensibles de tarjetas
+    Logs de auditoría completos
+    Detección de intentos de fraude
+
+    1.4 Casos de prueba
+    ID de prueba: SEC-001
+
+    Descripción: Verificar encriptación de datos sensibles
+    Precondiciones: Sistema en ambiente de pruebas seguro
+
+    Pasos a seguir:
+
+    Interceptar tráfico durante proceso de pago
+    Verificar headers de seguridad
+    Analizar datos en tránsito
+    Verificar datos almacenados
+
+    Resultado esperado:
+
+    Datos encriptados en tránsito y reposo
+    No exposición de datos sensibles en logs
+    Headers de seguridad correctos
+
+    Resultado real: <Resultado de la operación>
+    Observaciones: Verificar certificados SSL
+    Aprobación: Pendiente
+
+    ID de prueba: SEC-002
+
+    Descripción: Prueba de inyección SQL y XSS
+    Precondiciones: Ambiente de pruebas aislado
+
+    Pasos a seguir:
+
+    Intentar inyección SQL en campos de pago
+    Probar scripts maliciosos en campos de formulario
+    Verificar sanitización de inputs
+    Intentar bypass de validaciones
+
+    Resultado esperado:
+
+    Rechazo de inputs maliciosos
+    Logs de intentos de ataque
+    Sin vulnerabilidades SQL/XSS
+
+    Resultado real: <Resultado de la operación>
+    Observaciones: Documentar patrones bloqueados
+    Aprobación: Pendiente
+
+    ---------------------------------------------------------------------------------------------
+
+    2. Pruebas de Verificación de Pagos
+
+    2.1 Introducción
+    Propósito: Validar la correcta procesamiento, verificación y registro de transacciones de pago.
+    2.2 Alcance
+    Incluido:
+
+    Procesamiento de pagos
+    Validación de tarjetas
+    Manejo de errores
+    Conciliación de transacciones
+    Reembolsos
+    Notificaciones
+
+    2.3 Criterios de aceptación
+
+    Tiempo de procesamiento < 5 segundos
+    Tasa de éxito > 95%
+    Confirmación inmediata al usuario
+    Registro detallado de transacciones
+    Manejo correcto de reembolsos
+
+    2.4 Casos de prueba
+    ID de prueba: PAY-001
+
+    Descripción: Verificación de pago exitoso
+    Precondiciones: Cuenta con saldo y tarjeta válida
+
+    Pasos a seguir:
+
+    Iniciar proceso de pago
+    Ingresar datos de tarjeta válida
+    Confirmar transacción
+    Verificar:
+
+    Confirmación de pago
+    Actualización de inventario
+    Notificación al usuario
+    Registro en base de datos
+
+    Resultado esperado:
+
+    Transacción exitosa
+    Confirmación recibida
+    Datos actualizados correctamente
+
+    Resultado real: <Resultado de la operación>
+    Observaciones: Verificar tiempo de respuesta
+    Aprobación: Pendiente
+
+    ID de prueba: PAY-002
+
+    Descripción: Manejo de errores de pago
+    Precondiciones: Escenarios de error configurados
+
+    Pasos a seguir:
+
+    Probar diferentes escenarios de error:
+
+    Tarjeta sin fondos
+    Tarjeta expirada
+    Error de red
+    Timeout de transacción
+
+
+    Verificar mensajes de error
+    Comprobar rollback de transacción
+
+    Resultado esperado:
+
+    Mensajes de error claros
+    Rollback exitoso
+    No cobro al usuario
+    Log de errores detallado
+
+    Resultado real: <Resultado de la operación>
+    Observaciones: Verificar consistencia de datos
+    Aprobación: Pendiente
+
+    ---------------------------------------------
+
+    ID de prueba: PAY-003
+
+    Descripción: Prueba de carga en sistema de pagos
+    Precondiciones: Gateway de pagos en modo prueba
+
+    Cargas de prueba:
+
+    100 transacciones simultáneas
+    Mezcla de tarjetas válidas e inválidas
+    Diferentes montos de transacción
+
+    Pasos a seguir:
+
+    Iniciar prueba de carga
+    Monitorear:
+
+    Tiempo de respuesta
+    Tasa de éxito
+    Consistencia de datos
+
+
+    Verificar conciliación
+
+    Resultado esperado:
+
+    Procesamiento correcto de pagos válidos
+    Rechazo apropiado de pagos inválidos
+    Sin duplicación de transacciones
+
+    Resultado real: <Resultado de la operación>
+    Observaciones: Verificar conciliación bancaria
+    Aprobación: Pendiente
+
+    ---------------------------------------------
+
+    ID de prueba: PAY-004
+
+    Descripción: Verificación de reembolsos
+    Precondiciones: Transacción exitosa previa
+
+    Pasos a seguir:
+
+    Iniciar proceso de reembolso
+    Verificar autorización
+    Procesar reembolso
+    Comprobar:
+
+    Estado de la transacción
+    Notificación al usuario
+    Actualización de saldo
+
+    Resultado esperado:
+
+    Reembolso exitoso
+    Actualización correcta de registros
+    Notificación enviada
+
+    Resultado real: <Resultado de la operación>
+    Observaciones: Verificar tiempo de procesamiento
+    Aprobación: Pendiente
+
+    ---------------------------------------------
+    
+    2.5 Pruebas de Rendimiento de Pagos
+    ID de prueba: PAY-PERF-001
+
+    Descripción: Rendimiento del procesador de pagos
+    Precondiciones: Sistema en ambiente de pruebas
+
+    Cargas de prueba:
+
+    1000 transacciones por hora
+    50 reembolsos simultáneos
+    100 consultas de estado
+
+    Pasos a seguir:
+
+    Ejecutar prueba de carga
+    Monitorear tiempos de respuesta
+    Verificar integridad de datos
+    Analizar logs de transacciones
+
+    Resultado esperado:
+
+    Tiempo de respuesta < 3s
+    Sin transacciones duplicadas
+    Consistencia en base de datos
+
+    Resultado real: <Resultado de la operación>
+    Observaciones: Monitorear uso de recursos
+    Aprobación: Pendiente
 """
 
