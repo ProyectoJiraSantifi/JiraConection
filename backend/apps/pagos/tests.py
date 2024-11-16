@@ -131,5 +131,108 @@ Resultado real:
 Observaciones: N/A
 Aprobación: Aprobada/Negada
 
+----------------------------------------------------------
+
+Prueba 5: Seguridad en el Procesamiento de Tarjetas Bancarias
+
+Introducción
+Propósito: Verificar que el sistema maneje de forma segura la información de tarjetas bancarias y cumpla con los estándares PCI DSS.
+
+Alcance
+Incluido:
+
+Validación de datos de tarjetas
+Encriptación de información sensible
+Enmascaramiento de números de tarjeta
+Validación de fecha de expiración y CVV
+
+Excluido:
+
+Procesamiento real de transacciones bancarias
+Conexiones con redes bancarias externas
+
+Criterios de aceptación:
+Los números de tarjeta deben estar encriptados en tránsito y en reposo
+Solo se deben mostrar los últimos 4 dígitos de la tarjeta
+El CVV nunca debe ser almacenado
+La información sensible debe ser eliminada después del procesamiento
+
+Casos de prueba
+
+ID de prueba: SEG-005
+Descripción: Validar el manejo seguro de datos de tarjetas bancarias.
+Precondiciones: Sistema configurado con encriptación TLS 1.2 o superior.
+Pasos a seguir:
+
+Ingresar datos de una tarjeta de prueba
+Verificar la encriptación durante la transmisión
+Verificar el enmascaramiento en la interfaz
+Intentar acceder a los datos sin autorización
+Verificar logs del sistema por exposición de datos sensibles
+
+Resultado esperado:
+
+Datos transmitidos de forma encriptada
+Número de tarjeta enmascarado en todas las interfaces
+CVV no almacenado en base de datos
+Acceso denegado a intentos no autorizados
+Logs limpios de información sensible
+
+Resultado real:
+Observaciones: N/A
+Aprobación: Aprobada/Negada
+
+----------------------------------------------------------
+
+Prueba 6: Integridad y Eliminación Segura de Datos
+
+Introducción
+Propósito: Asegurar que la información sensible de pagos no persista en el sistema más allá del tiempo necesario para el procesamiento.
+
+Alcance
+Incluido:
+Proceso de eliminación segura de datos
+Verificación de datos residuales
+Validación de logs y cachés
+
+Excluido:
+Backups del sistema
+Datos archivados históricos
+
+Criterios de aceptación:
+La información sensible debe ser eliminada inmediatamente después del procesamiento
+No deben quedar rastros en caché o archivos temporales
+Los logs no deben contener información sensible
+Debe existir un registro de la eliminación exitosa
+
+Casos de prueba
+ID de prueba: SEG-006
+Descripción: Verificar la eliminación segura de datos sensibles post-procesamiento.
+Precondiciones: Sistema con transacciones procesadas que contengan datos sensibles.
+Pasos a seguir:
+
+Procesar un pago con tarjeta de prueba
+Verificar el procesamiento exitoso
+Revisar todas las ubicaciones posibles de almacenamiento:
+
+Base de datos principal
+Archivos temporales
+Logs del sistema
+Caché de aplicación
+
+
+Intentar recuperar los datos eliminados
+Verificar registros de auditoría
+
+Resultado esperado:
+
+Datos sensibles completamente eliminados
+Sin información recuperable en ningún almacenamiento
+Registro de auditoría que confirme la eliminación
+Imposibilidad de acceder a los datos eliminados
+
+Resultado real:
+Observaciones: N/A
+Aprobación: Aprobada/Negada
 """
 
