@@ -173,3 +173,120 @@ Prueba funcional: Búsqueda de productos
         - Observaciones: N/A
         - Aprobación: Aprobada
 """
+
+"""
+Prueba de visualicion de productos
+
+    1. Introducción.
+        Propósito: Verificar que el catálogo de productos se muestra correctamente con los detalles 
+        esenciales (nombre, imagen, descripción, precio y disponibilidad) y que la barra de búsqueda y los filtros funcionan de manera efectiva.
+
+    2. Alcance.
+        Incluido: Visualización del catálogo de productos, funcionalidad de barra de búsqueda, filtros de categoría, precio y disponibilidad.
+
+    3. Criterios de aceptación:
+        - Los productos deben aparecer con la información completa (nombre, imagen, descripción, precio, disponibilidad).
+        - La barra de búsqueda debe mostrar productos relacionados con el término ingresado.
+        - Los filtros deben actualizar la lista de productos sin recargar la página.
+        
+    4. Casos de prueba.
+
+        - ID de prueba: PUI-001
+
+            - Descripción: Verificar que todos los productos registrados se muestren correctamente en el catálogo.
+
+            - Precondiciones: El sistema tiene productos registrados.
+
+            - Pasos a seguir:
+                1. Acceder a la vista del catálogo de productos.
+                2. Verificar que los productos se muestran con nombre, imagen, descripción, precio y disponibilidad.
+
+            Resultado esperado: Los productos deben ser visibles con los detalles correctos.
+
+            Resultado real: Todos los productos fueron mostrados correctamente, con la imagen, nombre, descripción, precio y disponibilidad bien definidos.
+
+            Observaciones: No se presentaron errores en la carga de productos. La visualización fue clara y precisa.
+
+            Aprobación: Aprobada
+
+    -------------------------------------
+
+        - ID de prueba: PUI-002
+
+            - Descripción: Verificar el filtro por categoría.
+
+            - Precondiciones: El sistema tiene productos en diferentes categorías.
+
+            - Pasos a seguir:
+                1. Aplicar un filtro por categoría específica.
+                2. Verificar que solo los productos de la categoría seleccionada se muestren.
+
+            Resultado esperado: Los productos deben actualizarse para mostrar solo los de la categoría seleccionada.
+
+            Resultado real: El filtro de categoría funcionó correctamente y solo se mostraron los productos de la categoría seleccionada.
+
+            Observaciones: La actualización de productos fue instantánea, sin necesidad de recargar la página.
+
+            Aprobación: Aprobada
+
+    -------------------------------------
+
+        - ID de prueba: PUI-003
+
+            - Descripción: Verificar el filtro por precio.
+
+            - Precondiciones: El sistema tiene productos con diferentes rangos de precio.
+
+            - Pasos a seguir:
+                1. Aplicar el filtro de precio, seleccionando un rango específico.
+                2. Verificar que solo los productos dentro del rango de precio seleccionado se muestren.
+
+            Resultado esperado: Los productos deben actualizarse para mostrar solo los productos dentro del rango de precio seleccionado.
+
+            Resultado real: El filtro de precio funcionó correctamente, mostrando solo los productos dentro del rango establecido.
+
+            Observaciones: Los resultados se actualizaron rápidamente y los precios fueron mostrados claramente.
+
+            Aprobación: Aprobada
+
+    -------------------------------------
+
+        - ID de prueba: PUI-004
+
+            - Descripción: Verificar que la barra de búsqueda muestre productos que coincidan con el término de búsqueda.
+
+            - Precondiciones: El sistema tiene productos con términos relevantes en nombre o descripción.
+
+            - Pasos a seguir:
+                1. Ingresar un término de búsqueda en la barra de búsqueda.
+                2. Verificar que los productos que coincidan con el término ingresado aparezcan en la lista de resultados.
+
+            Resultado esperado: Los productos que coincidan con el término de búsqueda deben aparecer en la lista de resultados.
+
+            Resultado real: La barra de búsqueda mostró correctamente los productos relacionados con el término ingresado.
+
+            Observaciones: La búsqueda fue rápida y precisa. Los resultados fueron relevantes.
+
+            Aprobación: Aprobada
+
+    -------------------------------------
+
+        - ID de prueba: PUI-005
+
+            - Descripción: Verificar que la disponibilidad de los productos esté correcta.
+
+            - Precondiciones: El sistema tiene productos con diferentes estados de disponibilidad.
+
+            - Pasos a seguir:
+                1. Acceder a la vista del catálogo.
+                2. Verificar que la disponibilidad (en stock o agotado) de cada producto sea correcta.
+
+            Resultado esperado: La disponibilidad de los productos debe estar claramente visible y precisa.
+
+            Resultado real: La disponibilidad de los productos fue correctamente mostrada como "en stock" o "agotado".
+
+            Observaciones: Los productos agotados tenían una opción para notificación, lo cual mejoró la experiencia de usuario.
+
+            Aprobación: Aprobada
+
+"""
