@@ -1,3 +1,131 @@
+
+"""
+Prueba de unidad: Módulo Filtrar Pedidos Anteriores.
+
+1. Introducción.
+    Propósito: El propósito de estas pruebas es validar que la funcionalidad de filtrado de pedidos anteriores funcione correctamente según los criterios de filtrado especificados.
+
+2. Alcance.
+    Incluido: Filtrado de pedidos por fecha, estado del pedido, y otros parámetros definidos.
+
+3. Criterios de aceptación:
+    - El sistema debe permitir filtrar pedidos por fecha.
+    - El sistema debe permitir filtrar pedidos por estado (Ejemplo: "Enviado", "Pendiente").
+    - Los filtros deben mostrar resultados correctos según los criterios seleccionados.
+    - Los resultados filtrados deben ser presentados de manera correcta y clara.
+
+4. Casos de prueba.
+
+    - ID de prueba: U-001
+
+    - Descripción: Verificar que el sistema filtre los pedidos correctamente por fecha.
+
+    - Precondiciones: El usuario debe haber realizado varios pedidos en diferentes fechas.
+
+    Pasos a seguir:
+    1. Iniciar sesión con el usuario.
+    2. Acceder al historial de compras.
+    3. Aplicar el filtro por fecha.
+    4. Verificar que los resultados correspondan a las fechas seleccionadas.
+    
+    Resultado esperado: Los pedidos deben ser filtrados correctamente por fecha y mostrados en el historial.
+
+    Resultado real: Los pedidos fueron filtrados correctamente por fecha.
+
+    Observaciones: N/A
+
+    Aprobación: Aprobada
+
+    -------------------------------------
+
+    - ID de prueba: U-002
+
+    - Descripción: Verificar que el sistema filtre los pedidos correctamente por estado.
+
+    - Precondiciones: El usuario debe haber realizado varios pedidos con distintos estados (Ejemplo: "Enviado", "Pendiente").
+
+    Pasos a seguir:
+    1. Iniciar sesión con el usuario.
+    2. Acceder al historial de compras.
+    3. Aplicar el filtro por estado del pedido.
+    4. Verificar que los resultados corresponden al estado seleccionado.
+    
+    Resultado esperado: Los pedidos deben ser filtrados correctamente según el estado (Ejemplo: "Enviado", "Pendiente").
+
+    Resultado real: Los pedidos fueron filtrados correctamente por estado.
+
+    Observaciones: N/A
+
+    Aprobación: Aprobada
+
+    -------------------------------------
+
+    - ID de prueba: U-003
+
+    - Descripción: Verificar que el sistema muestre un mensaje adecuado cuando no se encuentren pedidos con los filtros aplicados.
+
+    - Precondiciones: El usuario debe haber realizado pedidos que no coincidan con los criterios de filtrado.
+
+    Pasos a seguir:
+    1. Iniciar sesión con el usuario.
+    2. Acceder al historial de compras.
+    3. Aplicar un filtro que no coincida con los pedidos (por ejemplo, filtrar por estado "Cancelado" cuando no se haya hecho ningún pedido cancelado).
+    4. Verificar que se muestre un mensaje indicando que no se encontraron resultados.
+    
+    Resultado esperado: El sistema debe mostrar un mensaje indicando que no se encontraron resultados para el filtro aplicado.
+
+    Resultado real: El mensaje de "No se encontraron resultados" fue mostrado correctamente.
+
+    Observaciones: N/A
+
+    Aprobación: Aprobada
+
+    -------------------------------------
+
+    - ID de prueba: U-004
+
+    - Descripción: Verificar que el sistema filtre los pedidos correctamente por un rango de fechas.
+
+    - Precondiciones: El usuario debe haber realizado pedidos en varias fechas.
+
+    Pasos a seguir:
+    1. Iniciar sesión con el usuario.
+    2. Acceder al historial de compras.
+    3. Aplicar un filtro por rango de fechas (por ejemplo, seleccionar una fecha de inicio y una fecha de fin).
+    4. Verificar que los pedidos mostrados estén dentro del rango de fechas seleccionado.
+
+    Resultado esperado: Los pedidos deben ser filtrados correctamente dentro del rango de fechas seleccionado.
+
+    Resultado real: Los pedidos fueron filtrados correctamente por el rango de fechas.
+
+    Observaciones: N/A
+
+    Aprobación: Aprobada
+
+    -------------------------------------
+
+    - ID de prueba: U-005
+
+    - Descripción: Verificar que el sistema permita filtrar pedidos por múltiples criterios simultáneamente (fecha y estado).
+
+    - Precondiciones: El usuario debe haber realizado pedidos en varias fechas y con diferentes estados.
+
+    Pasos a seguir:
+    1. Iniciar sesión con el usuario.
+    2. Acceder al historial de compras.
+    3. Aplicar los filtros de fecha y estado simultáneamente.
+    4. Verificar que los resultados filtrados coincidan con ambos criterios (fecha y estado).
+
+    Resultado esperado: Los pedidos deben ser filtrados correctamente por ambos criterios simultáneamente.
+
+    Resultado real: Los pedidos fueron filtrados correctamente por fecha y estado.
+
+    Observaciones: N/A
+
+    Aprobación: Aprobada
+"""
+
+
 """
 Prueba funcional: Módulo Registro y Gestión de Pedidos
 
