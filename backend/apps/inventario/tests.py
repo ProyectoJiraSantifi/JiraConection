@@ -94,3 +94,93 @@ Pruebas de Integración: Producto - Inventario
         - Observaciones: N/A
         - Aprobación: Aprobada
 """
+
+
+"""
+Pruebas de Integración Inversas: Inventario - Producto
+
+1. Introducción
+    Propósito: Validar que las instancias de la clase Producto puedan interactuar correctamente con el módulo Inventario, 
+    cumpliendo con las funciones de consulta, actualización y manipulación de inventario.
+
+2. Alcance
+    Incluido:
+        - Clase Producto.
+        - Métodos del módulo Inventario: agregarProducto, eliminarProducto, actualizarProducto.
+
+3. Criterios de aceptación
+    - Un producto debe poder ser añadido correctamente al inventario.
+    - Un producto debe poder ser eliminado del inventario en el que está contenido.
+    - Las actualizaciones desde un producto deben reflejarse correctamente en el inventario.
+    - La consulta desde un producto debe devolver los datos correctos del inventario.
+
+4. Casos de prueba
+
+    - ID de prueba: PI-INV-001
+        - Descripción: Verificar que un producto puede añadirse a un inventario desde el punto de vista del producto.
+        - Precondiciones:
+            - Producto creado con atributos válidos.
+            - Inventario inicializado con una lista vacía.
+        - Pasos a seguir:
+            1. Crear una instancia del inventario.
+            2. Crear una instancia de Producto con atributos válidos.
+            3. Usar el método agregarProducto del inventario para añadir el producto.
+            4. Verificar que el producto pertenece al inventario.
+        - Resultado esperado: El producto es añadido correctamente al inventario.
+        - Resultado real: El producto fue añadido exitosamente.
+        - Observaciones: N/A
+        - Aprobación: Aprobada
+
+    - ID de prueba: PI-INV-002
+        - Descripción: Verificar que un producto puede eliminarse del inventario desde el punto de vista del producto.
+        - Precondiciones:
+            - Producto añadido previamente al inventario.
+        - Pasos a seguir:
+            1. Crear una instancia del inventario con al menos un producto.
+            2. Llamar al método eliminarProducto del inventario para eliminar el producto.
+            3. Verificar que el producto ya no pertenece al inventario.
+        - Resultado esperado: El producto es eliminado correctamente del inventario.
+        - Resultado real: El producto fue eliminado exitosamente.
+        - Observaciones: N/A
+        - Aprobación: Aprobada
+
+    - ID de prueba: PI-INV-003
+        - Descripción: Verificar que un producto puede solicitar que su stock sea actualizado en el inventario.
+        - Precondiciones:
+            - Producto existente en el inventario.
+            - Stock inicial definido.
+        - Pasos a seguir:
+            1. Crear una instancia del inventario con un producto.
+            2. Modificar el stock del producto usando actualizarProducto en el inventario.
+            3. Verificar que el stock actualizado del producto se refleja en el inventario.
+        - Resultado esperado: El stock del producto se actualiza correctamente en el inventario.
+        - Resultado real: El stock fue actualizado exitosamente.
+        - Observaciones: N/A
+        - Aprobación: Aprobada
+
+    - ID de prueba: PI-INV-004
+        - Descripción: Verificar que un producto puede obtener información sobre el inventario al que pertenece.
+        - Precondiciones:
+            - Producto existente en el inventario.
+        - Pasos a seguir:
+            1. Crear una instancia del inventario con un producto.
+            2. Consultar la información del inventario desde el producto.
+            3. Verificar que el inventario devuelto es el esperado.
+        - Resultado esperado: El inventario al que pertenece el producto es identificado correctamente.
+        - Resultado real: El inventario fue identificado correctamente.
+        - Observaciones: N/A
+        - Aprobación: Aprobada
+
+    - ID de prueba: PI-INV-005
+        - Descripción: Verificar que un producto puede ser gestionado correctamente cuando forma parte de múltiples operaciones en el inventario.
+        - Precondiciones:
+            - Producto existente en el inventario.
+        - Pasos a seguir:
+            1. Crear una instancia del inventario con varios productos.
+            2. Realizar múltiples operaciones (agregar, eliminar, actualizar) sobre el mismo producto.
+            3. Verificar que las operaciones reflejan el estado correcto del producto en el inventario.
+        - Resultado esperado: El producto se gestiona correctamente a través de múltiples operaciones.
+        - Resultado real: El producto fue gestionado exitosamente en todas las operaciones.
+        - Observaciones: N/A
+        - Aprobación: Aprobada
+"""
