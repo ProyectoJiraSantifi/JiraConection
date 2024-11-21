@@ -184,3 +184,108 @@ Pruebas de Integración Inversas: Inventario - Producto
         - Observaciones: N/A
         - Aprobación: Aprobada
 """
+
+"""
+Pruebas de integración: Producto - Inventario (Alertas de Stock)
+
+1. Introducción.
+    Propósito: Verificar que el módulo de Inventario gestiona correctamente las alertas de stock relacionadas con los productos y que estas se actualizan conforme a las modificaciones realizadas.
+
+2. Alcance.
+    Incluido:
+    - Módulo de Producto
+    - Módulo de Inventario
+
+3. Criterios de aceptación:
+    - Las alertas de stock deben generarse automáticamente cuando el inventario de un producto alcanza un valor mínimo predefinido.
+    - El administrador debe poder actualizar el stock y verificar que las alertas se eliminan si el nivel de inventario es adecuado.
+    - La eliminación o adición de productos debe reflejarse en el inventario sin errores.
+
+4. Casos de prueba.
+
+    - ID de prueba: PI-001
+        - Descripción: Probar la actualización del stock en el inventario y su relación con las alertas de productos.
+        - Precondiciones: Los módulos de Producto e Inventario deben estar implementados y compilados correctamente.
+        - Componentes involucrados:
+            - Módulo de Producto
+            - Módulo de Inventario
+        - Pasos a seguir:
+            1. Iniciar el módulo de Inventario.
+            2. Agregar varios productos al inventario con diferentes niveles de stock.
+            3. Configurar el nivel de alerta mínima de stock para cada producto.
+            4. Reducir el nivel de stock de un producto por debajo del umbral.
+            5. Verificar que se genera una alerta de stock bajo.
+            6. Actualizar el stock del producto a un nivel aceptable.
+            7. Verificar que la alerta desaparece.
+        - Resultado esperado:
+            - Las alertas de stock bajo se generan y eliminan correctamente según las condiciones establecidas.
+        - Resultado real: Las alertas se generaron y eliminaron según lo esperado.
+        - Observaciones: N/A
+        - Aprobación: Aprobada
+
+    - ID de prueba: PI-002
+        - Descripción: Verificar que la eliminación de productos afecta el inventario sin errores.
+        - Precondiciones: Módulos funcionales.
+        - Componentes involucrados:
+            - Módulo de Producto
+            - Módulo de Inventario
+        - Pasos a seguir:
+            1. Iniciar el módulo de Inventario.
+            2. Agregar un producto al inventario.
+            3. Eliminar el producto del inventario.
+            4. Verificar que el producto ya no existe en la lista de inventario.
+        - Resultado esperado:
+            - El producto se elimina del inventario sin generar errores en las conexiones o en los registros relacionados.
+        - Resultado real: El producto se eliminó correctamente del inventario.
+        - Observaciones: N/A
+        - Aprobación: Aprobada
+
+    - ID de prueba: PI-003
+        - Descripción: Probar la actualización de la información de un producto en el inventario.
+        - Precondiciones: Productos previamente agregados al inventario.
+        - Componentes involucrados:
+            - Módulo de Producto
+            - Módulo de Inventario
+        - Pasos a seguir:
+            1. Iniciar el módulo de Inventario.
+            2. Seleccionar un producto existente en el inventario.
+            3. Modificar la información del producto, como precio o descripción.
+            4. Guardar los cambios y verificar que se reflejen correctamente en el inventario.
+        - Resultado esperado:
+            - Los cambios realizados en el producto se reflejan en el inventario sin inconsistencias.
+        - Resultado real: La información del producto se actualizó correctamente.
+        - Observaciones: N/A
+        - Aprobación: Aprobada
+
+    - ID de prueba: PI-004
+        - Descripción: Verificar que al agregar productos nuevos se actualiza la lista de inventario correctamente.
+        - Precondiciones: El módulo de Inventario debe estar inicializado.
+        - Componentes involucrados:
+            - Módulo de Producto
+            - Módulo de Inventario
+        - Pasos a seguir:
+            1. Iniciar el módulo de Inventario.
+            2. Agregar un nuevo producto con atributos válidos.
+            3. Verificar que el producto aparece en la lista de inventario.
+        - Resultado esperado:
+            - El nuevo producto aparece correctamente en el inventario.
+        - Resultado real: El producto fue añadido y aparece correctamente.
+        - Observaciones: N/A
+        - Aprobación: Aprobada
+
+    - ID de prueba: PI-005
+        - Descripción: Verificar que el sistema no permite añadir productos duplicados.
+        - Precondiciones: Un producto con los mismos atributos ya existe en el inventario.
+        - Componentes involucrados:
+            - Módulo de Producto
+            - Módulo de Inventario
+        - Pasos a seguir:
+            1. Iniciar el módulo de Inventario.
+            2. Intentar agregar un producto que ya existe en el inventario.
+            3. Verificar que el sistema rechaza la operación y genera un mensaje de error.
+        - Resultado esperado:
+            - El sistema no permite productos duplicados y muestra un mensaje de error adecuado.
+        - Resultado real: El sistema rechazó el producto duplicado con un mensaje de error claro.
+        - Observaciones: N/A
+        - Aprobación: Aprobada
+"""
